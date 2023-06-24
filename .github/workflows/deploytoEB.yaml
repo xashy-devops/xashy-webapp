@@ -33,6 +33,30 @@ jobs:
               run: mvn --batch-mode deploy
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Authenticate to aws 
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+                aws-region: ${{secrets.AWS_REGION}}
+
+            - name: push war to s3
+              run: aws s3 cp target/xashy-webapp.war s3://xashywebappp/
+              
+            - name: create a new elb app version of artifact
+              run: |
+                aws elasticbeanstalk create-application-version \
+                --application-name xashy-webapp \
+                --source-bundle S3Bucket="s3://xashywebappp/",S3Key="xashy-webapp.war" \
+                --version-label "ver-${{ github.sha }}" \
+                --description "commit-sha-${{ github.sha }}" 
+
+            - name: Deploy the app to the app env     
+              run:  aws elasticbeanstalk update-environment --environment-name xashy-webapp-dev --version-label "ver-${{ github.sha }}"
+                 
+
+
             
 
           
