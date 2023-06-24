@@ -12,8 +12,7 @@
 <h1 align="center">Welcome to Xashy Web Application Project.</h1>
 <h1 align="center">We are developing and supporting quality Software Solutions to millions of clients globally.
 	           We are raising millionaires in IT automation.
-	We offer Training for DevOps with Linux and Cloud equipping IT Engineers for best performance.
-	Class32 will start on April 15, 2023. </h1>
+we offer AWS and DevOps training and our next class starts in August 2nd </h1>
 <hr>
 <br>
 	<h1><h3> Server Side IP Address </h3><br>
