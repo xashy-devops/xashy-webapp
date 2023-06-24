@@ -2,7 +2,7 @@ name: Deploytoelasticbeanstalk
 on: 
   push:
     branches:
-        - main
+        - dockertest
   workflow_dispatch: 
     
 jobs:
