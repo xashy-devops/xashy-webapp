@@ -48,7 +48,7 @@ jobs:
               run: |
                 aws elasticbeanstalk create-application-version \
                 --application-name xashy-webapp \
-                --source-bundle S3Bucket="xashywebappp/",S3Key="xashy-webapp.war" \
+                --source-bundle S3Bucket="xashywebappp",S3Key="xashy-webapp.war" \
                 --version-label "ver-${{ github.sha }}" \
                 --description "commit-sha-${{ github.sha }}" 
 
