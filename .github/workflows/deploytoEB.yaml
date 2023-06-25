@@ -27,7 +27,7 @@ jobs:
               run: mvn package 
             
             - name: containerise with docker
-              run: docker build Dockerfile  
+              run: docker build . 
                 
             
             # - name: code analysis with sonarqube
